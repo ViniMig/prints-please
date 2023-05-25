@@ -1,0 +1,332 @@
+* {box-sizing: border-box; margin: 0;}
+
+body {font-family: 'Noto Sans', sans-serif;}
+
+a {
+    text-decoration: none !important;
+    color: dodgerblue;
+}
+
+.normal-size-txt {font-size: max(0.8vw, 8px) !important;}
+
+.small-size-txt {font-size: max(0.6vw, 6px) !important;}
+
+.small-title {font-size: max(1vw, 10px) !important;}
+
+.medium-small-title {font-size: max(1.2vw, 12px) !important;}
+
+.normal-title {font-size: max(1.5vw, 16px) !important;}
+
+.medium-title {font-size: max(1.7vw, 18px) !important;}
+
+.big-title {font-size: max(2vw, 24px) !important;}
+
+nav {
+    width: 100%;
+    height: 10svh;
+    border-bottom: 1px solid lightgrey;
+    font-size: 1vw;
+}
+
+nav a:hover {color: blue;}
+
+.link-home {
+    height: 100%;
+    width: 40%;
+    padding: 10px;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+nav ul {
+    list-style-type: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+header {
+    height: 35svh;
+    background: url("../imgs/header.jpg") no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.header-content {
+    text-align: center;
+    width: 100%;
+}
+
+.page-title {
+    font-size:5vw;
+    color: white;
+}
+
+.nav-button {
+    border-radius: 10px;
+    border: 1px solid white;
+    background-color: cornflowerblue;
+    color: white;
+    font-size: 1.5vw;
+    padding: 10px 20px;
+    box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
+    cursor: pointer;
+}
+
+.nav-button:hover { background-color: darkblue;}
+
+.home-buttons {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+main {
+    min-height: 50svh;
+}
+
+.gallery-title{
+    width: 98%;
+    margin: 30px auto;
+}
+
+.card-gallery {
+    width: 98%;
+    height: 100%;
+    margin: 30px auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.doi { font-weight: bold; }
+
+.clear {clear: both;}
+
+.card {
+    position: relative;
+    border-radius: 5px;
+    background-color: #ededed;
+    width: max(28%, 300px);
+    height: 300px;
+    box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
+}
+
+.card .info {
+    position: absolute;
+    border-radius: 5px 0  0 5px;
+    background-color: lightblue;
+    width: max(10%, 105px);
+    height: 100%;
+    z-index: 1;
+    transition: width 500ms;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.card .general {
+    position: absolute;
+    padding: 5px 10px;
+    width: calc(100% - max(10%, 105px));
+    left: max(10%, 105px);
+    height: 100%;
+}
+
+.general .corresp-author {
+    position: absolute;
+    bottom: 30px;
+    left: 10px;
+}
+
+.general .date {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.general .read-abstract {
+    position: absolute;
+    bottom: 10px;
+    right: 20%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.card .info .category-img {
+    width: 90px;
+    height: 90px;        
+}
+
+.card .info .info-short {
+    width: max(10%, 105px);
+    float: left;
+    position: absolute;
+    left: 0;
+    height: 100%;
+    margin-top: -10px;
+    padding-top: 10px;
+    border-right: 2px dotted lightskyblue;
+    text-align: center;
+}
+
+.card .info .info-short .category-tag {
+    color: blue;
+}
+
+.click-icon {
+    width: 32px; 
+    height: 32px;
+    position: absolute;
+    bottom: 20px;
+    left: calc(50% - 16px)
+}
+
+.card .info .info-full {
+    width: calc(100% - max(10%, 105px));
+    float: left;
+    position: absolute;
+    left: max(10%, 105px);
+    height: 100%;
+    padding: 3px 10px;
+    display: none; /*grid*/
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1.5fr 1fr 10px 1fr 1fr;
+    cursor: default;
+}
+
+.info-full .full-paper i {
+    font-size: 2rem;
+    color: black;
+}
+
+.info-full .card-title, .info-full .authors { grid-column: 1/4; }
+
+.info-full .full-paper {
+    grid-column: 2/4;
+    grid-row: 4/5;
+    justify-self: center;
+    align-self: center;
+    cursor: pointer;
+}
+
+.info-full .date {
+    grid-column: 1/2;
+    grid-row: 5/6;
+    align-self: center;
+}
+
+.info-full .doi {
+    grid-column: 2/4;
+    grid-row: 5/6;
+    align-self: center;
+    justify-self: center;
+}
+
+.abstract-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(24, 23, 23, 0.137);
+}
+
+.abstract-text {
+    position: relative;
+    width: 80%;
+    max-height: 90%;
+    margin: 100px auto;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid black;
+    background-color: white;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.abstract-text .modal-head {
+    width: 100%;
+    height: 20px;
+}
+
+.abstract-text .modal-head .close-modal{
+    float: right;
+    cursor: pointer;
+}
+
+.abstract-text .abstract-title, .abstract-text .abstract-authors {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+/*Search.php*/
+.search-bar {
+    background-color: #ededed;
+    display: flex;
+}
+
+.search-by-doi { padding: 20px; }
+
+.search-by-doi form p { margin: 20px 0 10px 0; }
+
+.search-by-doi form input[type=text], .search-by-doi form label { font-size: 1.2rem; }
+
+.search-by-doi form input[type=text] {
+    width: 200px;
+    height: 30px;
+}
+
+/*About.php*/
+.gallery-intro {
+    width: 90%;
+    margin: 30px auto;
+}
+
+.attribution-gal {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about-card {
+    width: 350px;
+    height: 350px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.about-card img {
+    width: 85%;
+    height: 75%;
+}
+
+footer {
+    height: 5svh;
+    width: 100%;
+    border-top: 1px solid lightgrey;
+    text-align: center;
+    padding: 1svh;
+}
+
+footer p {
+    width: 30%;
+    margin: auto;
+}
