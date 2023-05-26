@@ -2,24 +2,65 @@
 
 body {font-family: 'Noto Sans', sans-serif;}
 
+.loader {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: navy;
+}
+
+.loader-svg{
+    width: 100px;
+    height: 100px;
+}
+
+.d20loader {  
+    animation-name: roll;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  
+  @keyframes roll {
+    0% {
+      transform: translateY(0px);
+      fill: white;
+    }
+    
+    50% {
+      transform: translateY(-50px) rotate(120deg);
+      fill: lightblue;
+    }
+    
+    100% {
+      transform: translateY(0px) rotate(360deg);
+      fill: cornflowerblue;
+    }
+  }
+
 a {
     text-decoration: none !important;
     color: dodgerblue;
 }
 
-.normal-size-txt {font-size: max(0.8vw, 8px) !important;}
+.normal-size-txt {font-size: max(0.8vw, 10px) !important;}
 
-.small-size-txt {font-size: max(0.6vw, 6px) !important;}
+.small-size-txt {font-size: max(0.6vw, 8px) !important;}
 
-.small-title {font-size: max(1vw, 10px) !important;}
+.small-title {font-size: max(1vw, 12px) !important;}
 
-.medium-small-title {font-size: max(1.2vw, 12px) !important;}
+.medium-small-title {font-size: max(1.2vw, 14px) !important;}
 
 .normal-title {font-size: max(1.5vw, 16px) !important;}
 
 .medium-title {font-size: max(1.7vw, 18px) !important;}
 
-.big-title {font-size: max(2vw, 24px) !important;}
+.big-title {font-size: max(2vw, 20px) !important;}
 
 nav {
     width: 100%;
@@ -65,7 +106,7 @@ header {
 }
 
 .page-title {
-    font-size:5vw;
+    font-size:max(5vw, 32px);
     color: white;
 }
 
@@ -74,10 +115,14 @@ header {
     border: 1px solid white;
     background-color: cornflowerblue;
     color: white;
-    font-size: 1.5vw;
     padding: 10px 20px;
     box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
     cursor: pointer;
+}
+
+.nav-button svg {
+    width: max(1.5vw, 16px);
+    height: max(1.5vw, 16px);
 }
 
 .nav-button:hover { background-color: darkblue;}
@@ -145,17 +190,8 @@ main {
     height: 100%;
 }
 
-.general .corresp-author {
-    position: absolute;
-    bottom: 30px;
-    left: 10px;
-}
-
-.general .date {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-}
+.general .corresp-author,
+.general .date { margin-top: 10px; }
 
 .general .read-abstract {
     position: absolute;
@@ -184,6 +220,7 @@ main {
 
 .card .info .info-short .category-tag {
     color: blue;
+    font-size: 10px;
 }
 
 .click-icon {
@@ -276,19 +313,39 @@ main {
 
 /*Search.php*/
 .search-bar {
+    min-height: 10svh;
     background-color: #ededed;
     display: flex;
+    align-items: center;
+    column-gap: 50px;
+    padding: 0;
+    flex-wrap: wrap;
 }
 
-.search-by-doi { padding: 20px; }
+.search-by { padding: 10px;}
 
-.search-by-doi form p { margin: 20px 0 10px 0; }
+.search-by form {
+    margin-top: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
 
-.search-by-doi form input[type=text], .search-by-doi form label { font-size: 1.2rem; }
+.search-by-date {border-left: 2px dotted gray;}
 
-.search-by-doi form input[type=text] {
+.search-by form input[type=text], 
+.search-by form input[type=date], 
+.search-by form label { font-size: 1.2rem; }
+
+.search-by form input[type=text],
+.search-by form input[type=date] {
     width: 200px;
     height: 30px;
+}
+
+.search-by form input[type=submit] {
+    margin-left: 20px;
+    font-size: 0.8vw;
 }
 
 /*About.php*/
@@ -303,7 +360,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    gap: 50px;
 }
 
 .about-card {
@@ -313,10 +370,12 @@ main {
     overflow: hidden;
 }
 
-.about-card img {
+.about-card img, .about-card svg {
     width: 85%;
     height: 75%;
 }
+
+.about-card .default-loader { background-color: navy;}
 
 footer {
     height: 5svh;
@@ -329,4 +388,11 @@ footer {
 footer p {
     width: 30%;
     margin: auto;
+}
+
+@media screen and (max-width: 1006px) {
+    .search-by-date {
+        border-left: none;
+        border-top: 2px dotted gray;
+    }
 }

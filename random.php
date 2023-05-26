@@ -1,3 +1,4 @@
+<?php  include_once("seek_and_create.php") ?>
 <section>
     <h1 class="gallery-title big-title">Lady Luck says...</h1>
         <?php
